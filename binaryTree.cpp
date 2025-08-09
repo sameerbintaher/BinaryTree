@@ -2,7 +2,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/**
+ * Binary Tree Utilities - Public API Documentation
+ *
+ * This program provides a simple binary tree node type and traversal/utility functions.
+ *
+ * Public API:
+ * - class treeNode
+ * - void printSpace(int level)
+ * - void printTree(treeNode* root, int level)
+ * - void inOrder(treeNode* root, string& out)
+ * - void preOrder(treeNode* root, string& out)
+ * - void postOrder(treeNode* root, string& out)
+ * - void levelOrderTraversal(treeNode* root, string& out)
+ * - void printMaxAtLevelK(treeNode* root, int k, int level, int& maxValue)
+ * - void printLeaves(treeNode* root)
+ * - void printLeftNonLeaves(treeNode* root)
+ * - void printRightNonLeaves(treeNode* root)
+ * - void boundaryTraversal(treeNode* root)
+ *
+ * Usage:
+ *  - Build: g++ -std=c++17 -O2 -Wall -Wextra -o binaryTree binaryTree.cpp
+ *  - Input format:
+ *      n
+ *      value leftIndex rightIndex   (n lines)
+ *      k
+ *  - See README for full example and explanations.
+ */
+
 // make a tree node
+/**
+ * Represents a node in a binary tree.
+ * Holds integer data and pointers to left and right children.
+ */
 class treeNode
 {
 public:
@@ -18,6 +50,11 @@ public:
 };
 
 // print space
+/**
+ * Print indentation spaces (3 per level) to stdout.
+ *
+ * Side effects: writes to std::cout.
+ */
 void printSpace(int level)
 {
      for (int i = 0; i < level; i++)
@@ -27,6 +64,13 @@ void printSpace(int level)
 }
 
 // print a preOrdered tree
+/**
+ * Pretty-print the tree in a hierarchical form using a pre-order style.
+ * @param root  Root node to print.
+ * @param level Initial indentation level (usually 0).
+ *
+ * Side effects: writes to std::cout.
+ */
 void printTree(treeNode *root, int level)
 {
      if (root == NULL)
@@ -59,6 +103,11 @@ void printTree(treeNode *root, int level)
 }
 
 // inOrder
+/**
+ * Perform in-order traversal and append node values to chk without delimiters.
+ * @param root Root node to traverse.
+ * @param chk  Output string (appended to, not cleared).
+ */
 void inOrder(treeNode *root, string &chk)
 {
      if (root == NULL)
@@ -71,6 +120,11 @@ void inOrder(treeNode *root, string &chk)
 }
 
 // preOrder
+/**
+ * Perform pre-order traversal and append node values to chk without delimiters.
+ * @param root Root node to traverse.
+ * @param chk  Output string (appended to, not cleared).
+ */
 void preOrder(treeNode *root, string &chk)
 {
      if (root == NULL)
@@ -83,6 +137,11 @@ void preOrder(treeNode *root, string &chk)
 }
 
 // postOrder
+/**
+ * Perform post-order traversal and append node values to chk without delimiters.
+ * @param root Root node to traverse.
+ * @param chk  Output string (appended to, not cleared).
+ */
 void postOrder(treeNode *root, string &chk)
 {
      if (root == NULL)
@@ -95,6 +154,11 @@ void postOrder(treeNode *root, string &chk)
 }
 
 // level order traversal
+/**
+ * Perform level-order (BFS) traversal and append node values to chk without delimiters.
+ * @param root Root node to traverse.
+ * @param chk  Output string (appended to, not cleared).
+ */
 void levelOrderTraversal(treeNode *root, string &chk)
 {
      if (root == NULL)
@@ -120,6 +184,13 @@ void levelOrderTraversal(treeNode *root, string &chk)
 }
 
 // print maximum value at level k
+/**
+ * Compute the maximum node value at level k.
+ * @param root     Root node of the tree.
+ * @param k        Target level (0-based).
+ * @param level    Current level (pass 0 on initial call).
+ * @param max      Reference to store the maximum value found at level k.
+ */
 void printMaxAtLevelK(treeNode *root, int k, int level, int &max)
 {
      if (root == NULL)
@@ -139,6 +210,11 @@ void printMaxAtLevelK(treeNode *root, int k, int level, int &max)
 }
 
 // print leaves
+/**
+ * Print all leaf node values separated by spaces.
+ *
+ * Side effects: writes to std::cout.
+ */
 void printLeaves(treeNode *root)
 {
      if (root == NULL)
@@ -153,6 +229,12 @@ void printLeaves(treeNode *root)
      printLeaves(root->rightChild);
 }
 
+/**
+ * Print the left boundary non-leaf nodes from the given root downward.
+ * Skips leaf nodes to avoid duplication in boundary traversal.
+ *
+ * Side effects: writes to std::cout.
+ */
 void printLeftNonLeaves(treeNode *root)
 {
      if (root == NULL)
@@ -171,6 +253,12 @@ void printLeftNonLeaves(treeNode *root)
      }
 }
 
+/**
+ * Print the right boundary non-leaf nodes from the given root downward.
+ * Skips leaf nodes to avoid duplication in boundary traversal.
+ *
+ * Side effects: writes to std::cout.
+ */
 void printRightNonLeaves(treeNode *root)
 {
      if (root == NULL)
@@ -190,6 +278,12 @@ void printRightNonLeaves(treeNode *root)
 }
 
 // boundary traversal
+/**
+ * Print the boundary traversal of the tree: root, left boundary non-leaves,
+ * leaves (left subtree then right subtree), right boundary non-leaves.
+ *
+ * Side effects: writes to std::cout.
+ */
 void boundaryTraversal(treeNode *root)
 {
      if (root == NULL)
